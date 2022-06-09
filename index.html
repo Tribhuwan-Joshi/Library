@@ -8,16 +8,62 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Library</title>
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="icons/icon.png">
 </head>
 
 <body>
-
     <div class="header">
-        <div class="name">Books Manager</div>
-        <div class="cite">~ Manage your books</div>
+        Library
+    </div>
+    <div class="main">
+
+        <div class="info">
+            <h3>Information</h3>
+            <div class="book-info">Total Books: <span id="total_books">12</span> </div>
+            <div class="read-info">Read Books: <span id="read_count">6</span></div>
+            <div class="unread-info">Unread Books: <span id="unread_count">6</span></div>
+        </div>
+
+
+        <button id="add-book">Add Book</button>
+
+        <div class="add-book-form">
+            <span class="cancel-button">x</span>
+            <div class="new-book">New Book</div>
+            <form>
+                <div class="title input">
+                    <input type="text" id="title" placeholder="Title" required>
+                </div>
+                <div class="author input"><input type="text" id="author" placeholder="Author" required></div>
+                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" required></div>
+                <div class="status">
+                    Status - 
+                    <input type="radio" name="status" id="read" required>
+                    <label for="read">Read</label>
+                    <input type="radio" name="status" id="unread">
+                    <label for="unread">Unread</label>
+                </div>
+                <div class="done"><input type="submit" id="done" value="Done"></div>
+            </form>
+          <!-- <div class="Title input"> <input type="text" id="title" placeholder="Title" required></div>
+        <div class="Author input"> <input type="text" id="author" placeholder="Author" required></div>
+        <div class="Pages Input"> <input type="number" min="1" id="pages" placeholder="Pages" required></div>
+        <div class="Status">
+            Status : 
+            <input type="radio" name="status" id="read" required>
+            <label for="read" >Read</label>
+            <input type="radio" name="status" id="unread">
+            <label for="unread">Unread</label>
+            
+            
+        </div>
+        <div class="done"><button id="done-button">Done</button></div> -->
+        </div>
     </div>
 
+    <!-- <div class="footer">
+        Made with 💜 by Tjsm <a href="https://github.com/Tribhuwan-Joshi"><img src="./icons/github.png" alt=""></a>
+    </div> -->
 </body>
 
 </html>
