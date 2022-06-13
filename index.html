@@ -18,52 +18,86 @@
     <div class="main">
 
         <div class="info">
-            <h3>Information</h3>
-            <div class="book-info">Total Books: <span id="total_books">12</span> </div>
-            <div class="read-info">Read Books: <span id="read_count">6</span></div>
-            <div class="unread-info">Unread Books: <span id="unread_count">6</span></div>
+            <div>
+                <h3>Information</h3>
+            </div>
+            <div class="book-count">Total Books: <span id="total_books">0</span> </div>
+            <div class="button"><button id="add-book">New Book</button></div>
+            <div class="read-count">Read Books: <span id="total_read">0</span></div>
+            <div class="unread-count">Unread Books: <span id="total_unread">0</span></div>
         </div>
 
 
-        <button id="add-book">Add Book</button>
 
+        <!-- New Book form  -->
         <div class="add-book-form">
-            <span class="cancel-button">x</span>
+
             <div class="new-book">New Book</div>
             <form>
                 <div class="title input">
                     <input type="text" id="title" placeholder="Title" required>
                 </div>
                 <div class="author input"><input type="text" id="author" placeholder="Author" required></div>
-                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" required></div>
-                <div class="status">
-                    Status - 
-                    <input type="radio" name="status" id="read" required>
+                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000" required>
+                </div>
+                <div class="status-form">
+                    Status -
+                    <input type="radio" name="status" id="read"  required value="Read">
                     <label for="read">Read</label>
-                    <input type="radio" name="status" id="unread">
+                    <input type="radio" name="status" id="unread" checked value="Unread">
                     <label for="unread">Unread</label>
                 </div>
-                <div class="done"><input type="submit" id="done" value="Done"></div>
+                <div class="done"><input type="button" id="done" value="Add"></div>
             </form>
-          <!-- <div class="Title input"> <input type="text" id="title" placeholder="Title" required></div>
-        <div class="Author input"> <input type="text" id="author" placeholder="Author" required></div>
-        <div class="Pages Input"> <input type="number" min="1" id="pages" placeholder="Pages" required></div>
-        <div class="Status">
-            Status : 
-            <input type="radio" name="status" id="read" required>
-            <label for="read" >Read</label>
-            <input type="radio" name="status" id="unread">
-            <label for="unread">Unread</label>
-            
-            
         </div>
-        <div class="done"><button id="done-button">Done</button></div> -->
-        </div>
+
+
     </div>
 
-    <!-- <div class="footer">
-        Made with 💜 by Tjsm <a href="https://github.com/Tribhuwan-Joshi"><img src="./icons/github.png" alt=""></a>
-    </div> -->
+    <div class="container">
+        <div class="book-data">
+            <table>
+
+                <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>Vagabond</td>
+                        <td>Miyomoto makashi</td>
+                        <td>400</td>
+                        <td class="status unread">Unread</td>
+                        <td id="trash" title="remove this book"><img src="./icons/trash.png" alt=""></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Vagabond</td>
+                        <td>Miyomoto makashi</td>
+                        <td>400</td>
+                        <td class="status read">Read</td>
+                        <td id="trash" title="remove this book"><img src="./icons/trash.png" alt=""></td>
+                    </tr> -->
+                    
+
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ by Tjsm <a href="https://github.com/Tribhuwan-Joshi" target="_blank"><img
+                    src="./icons/github.png" alt=""></a>
+        </div>
+    </div>
+    <!--container-->
 </body>
 
 </html>
