@@ -40,7 +40,7 @@ body {
   justify-content:center;
 }
 
-#add-book {
+#add-book, #delete-all {
   border-radius: 10px;
   border: 1px solid rgb(128, 127, 140);
   cursor: pointer;
@@ -52,7 +52,11 @@ body {
   font-size: 17px;
 }
 #add-book:hover {
+  background-color: rgb(90, 243, 90);
   box-shadow: 2px 2px 3px gray;
+}
+#delete-all:hover{
+  background-color: rgb(243, 118, 118);
 }
 
 .add-book-form {

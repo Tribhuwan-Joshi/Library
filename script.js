@@ -2,6 +2,9 @@
 const totalCount = document.querySelector("#total_books");
 const readCount = document.querySelector("#total_read");
 const unreadCount = document.querySelector("#total_unread");
+const form = document.querySelector("form");
+const table = document.querySelector("table").getElementsByTagName("tbody")[0];
+table.textContent = "";
 
 // Book constructor
 function Book(bookId, title, author, pages, status) {
@@ -16,6 +19,7 @@ function Book(bookId, title, author, pages, status) {
 document.addEventListener("click", () => {
   bookFormVisible = false;
   addBookForm.style.visibility = "hidden";
+  form.reset();
 });
 
 // new book form
@@ -34,6 +38,31 @@ addBook.addEventListener("click", (e) => {
   addBookForm.style.visibility = "visible";
   bookFormVisible = true;
 });
+
+
+
+// delete book eventListener
+
+const deleteAll = document.querySelector("button#delete-all");
+deleteAll.addEventListener("click", (e)=>{
+  e.stopPropagation();
+ 
+  if (table.textContent != "") {
+    let response = confirm("Are you sure to delete all books?")
+    if (response) {
+      table.textContent = "";
+    
+    }
+  }
+  else {
+    alert("No books to delete");
+  }
+})
+
+
+
+
+
 
 // Book counters
 let totalBooks = 0;
@@ -57,14 +86,9 @@ function renderBook(book) {
                         <td class="status ${book.status}">${book.status}</td>
                         <td id="trash" title="remove this book"><img src="./icons/trash.png" alt=""></td>
                     </tr>`;
-  let table = document.querySelector("table").getElementsByTagName("tbody")[0];
   let newRow = table.insertRow();
   newRow.innerHTML = htmlContent;
 }
-
-
-
-
 
 // Book array
 let myLibrary = [];
@@ -90,16 +114,24 @@ done.addEventListener("click", () => {
   ) {
     return;
   } else {
-    myLibrary.push(
-      new Book(bookId, title.value, author.value, pages.value, statusValue)
+    let myBook = new Book(
+      bookId,
+      title.value,
+      author.value,
+      pages.value,
+      statusValue
     );
-    console.log(statusValue);
-    renderBook(
-      new Book(bookId++, title.value, author.value, pages.value, statusValue)
-    );
-
+    addBookToLibrary(myBook);
   }
-  
+  // reset the form and hide it
 });
 
-function addBookToLibrary() {}
+function addBookToLibrary(myBook) {
+  myLibrary.push(myBook);
+  console.log(myLibrary);
+
+  renderBook(myBook);
+  addBookForm.style.visibility = "hidden";
+  bookFormVisible = false;
+  form.reset();
+}
