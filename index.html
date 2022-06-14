@@ -33,21 +33,21 @@
         <div class="add-book-form">
 
             <div class="new-book">New Book</div>
-            <form>
+            <form onsubmit="return false;">
                 <div class="title input">
-                    <input type="text" id="title" placeholder="Title" required>
+                    <input type="text" id="title" placeholder="Title" required spellcheck="false">
                 </div>
-                <div class="author input"><input type="text" id="author" placeholder="Author" required></div>
-                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000" required>
+                <div class="author input"><input type="text" id="author" placeholder="Author" required spellcheck="false"></div>
+                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000" required spellcheck="false">
                 </div>
                 <div class="status-form">
                     Status -
                     <input type="radio" name="status" id="read"  required value="Read">
                     <label for="read">Read</label>
-                    <input type="radio" name="status" id="unread" checked value="Unread">
+                    <input type="radio" name="status" id="unread"  value="Unread">
                     <label for="unread">Unread</label>
                 </div>
-                <div class="done"><input type="button" id="done" value="Add"></div>
+                <div class="done"><button>Add</button></div>
             </form>
         </div>
 
@@ -60,7 +60,7 @@
 
                 <thead>
                     <tr>
-                        <th scope="col">S.No</th>
+                        <th scope="col">Id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
                         <th scope="col">Pages</th>
