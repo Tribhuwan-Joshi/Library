@@ -174,8 +174,10 @@ thead th:nth-child(4) {
 thead th:nth-child(5) {
   width: 15%;
 }
-table #trash {
-  padding-left: 2%;
+
+table img#trash {
+ display: block;
+ margin-left: 1vw;
   cursor: pointer;
 }
 
@@ -197,12 +199,14 @@ td {
   letter-spacing: 1px;
   text-align: center;
 }
+
 tbody tr:nth-child(even) {
   background-color: rgb(236, 239, 234);
 }
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
+
 
 /* status */
 .status {

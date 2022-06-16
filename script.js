@@ -16,6 +16,16 @@ const author = document.querySelector("form input#author");
 const pages = document.querySelector("form input#pages");
 const bookStatus = document.querySelector('input[name="status"]');
 
+// Book counters
+let totalBooks = 0;
+let readBooks = 0;
+let unreadBooks = 0;
+
+// update info data
+const totalContainer = document.querySelector("#total_books");
+const readContainer = document.querySelector("#total_read");
+const unreadContainer = document.querySelector("#total_unread");
+
 // Book array
 let myLibrary = [];
 
@@ -74,22 +84,12 @@ function renderBook() {
                         <td class="status ${
                           myLibrary[i].status
                         }" data-Id=${i}>${myLibrary[i].status}</td>
-                        <td id="trash" title="remove this book" data-Id=${i}><img src="./icons/trash.png" alt=""></td>
+                        <td  title="remove this book" ><img src="./icons/trash.png"  id="trash" data-Id=${i} alt=""></td>
                     </tr>`;
     let newRow = table.insertRow();
     newRow.innerHTML = htmlContent;
   }
 }
-
-// Book counters
-let totalBooks = 0;
-let readBooks = 0;
-let unreadBooks = 0;
-
-// update info data
-const totalContainer = document.querySelector("#total_books");
-const readContainer = document.querySelector("#total_read");
-const unreadContainer = document.querySelector("#total_unread");
 
 function updateInfo() {
   totalContainer.textContent = totalBooks;
@@ -114,39 +114,54 @@ function addBookToLibrary(myBook) {
   bookFormVisible = false;
 }
 
-
 // create new book object when clicked
 const done = document.querySelector(".done button");
 const ele = document.getElementsByName("status");
 let statusContainer;
-
+let removeContainer;
 
 // toggle status
 
 function toggleStatus() {
   statusContainer.forEach((sc) => {
-    sc.addEventListener('click', (e) => {
-      let index = e.target.getAttribute('data-Id');
+    sc.addEventListener("click", (e) => {
+      let index = e.target.getAttribute("data-Id");
       let textContent = e.target.textContent;
       if (textContent == "Read") {
         e.target.textContent = "Unread";
         e.target.style.backgroundColor = "rgb(253, 155, 70)";
         myLibrary[index].status = "Unread";
         readBooks--;
-
-      }
-      else {
+      } else {
         e.target.textContent = "Read";
         e.target.style.backgroundColor = "rgb(125, 243, 131)";
         myLibrary[index].status = "Read";
         readBooks++;
       }
       updateInfo();
-    })
-  })
+    });
+  });
 }
 
+// Remove Book
+function removeBook() {
+  removeContainer.forEach((rc) => {
+    rc.addEventListener("click", (e) => {
+      let index = e.target.getAttribute("data-Id");
+      console.log(myLibrary[index].status);
+      if (myLibrary[index].status == "Read") {
+        readBooks--;
+      }
+      totalBooks--;
+      myLibrary.splice(index, 1);
 
+      updateInfo();
+      renderBook();
+    });
+  });
+}
+
+// Event listener to add new book
 done.addEventListener("click", () => {
   let statusValue = "";
   for (i = 0; i < ele.length; i++) {
@@ -155,13 +170,22 @@ done.addEventListener("click", () => {
     }
   }
 
+  let titleValue = title.value
+    .trim()
+    .toLowerCase()
+    .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
+  let authorValue = author.value
+    .trim()
+    .toLowerCase()
+    .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
   if (
-    title.value == "" ||
-    author.value == "" ||
+    titleValue == "" ||
+    authorValue == "" ||
     pages.value == "" ||
     statusValue == ""
   ) {
     alert("Please enter all the details ! ");
+
     title.focus();
 
     return;
@@ -176,16 +200,14 @@ done.addEventListener("click", () => {
 
     // update info data
     updateInfo();
-    
-    let myBook = new Book(title.value, author.value, pages.value, statusValue);
+
+    let myBook = new Book(titleValue, authorValue, pages.value, statusValue);
     addBookToLibrary(myBook);
 
-    statusContainer = document.querySelectorAll('table .status');
+    statusContainer = document.querySelectorAll("table .status");
+    removeContainer = document.querySelectorAll("img#trash");
 
     toggleStatus();
-  
+    removeBook();
   }
 });
-
-
-

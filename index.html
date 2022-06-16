@@ -34,12 +34,12 @@
         <div class="add-book-form">
 
             <div class="new-book">New Book</div>
-            <form onsubmit="return false;" novalidate>
+            <form onsubmit="return false;">
                 <div class="title input">
                     <input type="text" id="title" placeholder="Title" required spellcheck="false">
                 </div>
                 <div class="author input"><input type="text" id="author" placeholder="Author" required
-                        spellcheck="false"></div>
+                        spellcheck="false" min="1" maxlength="25"></div>
                 <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000"
                         required spellcheck="false">
                 </div>
@@ -68,6 +68,7 @@
                         <th scope="col">Author</th>
                         <th scope="col">Pages</th>
                         <th scope="col">Status</th>
+                        
                         
                     </tr>
                 </thead>
