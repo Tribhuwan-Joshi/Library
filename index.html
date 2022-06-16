@@ -22,7 +22,8 @@
                 <h3>Information</h3>
             </div>
             <div class="book-count">Total Books: <span id="total_books">0</span> </div>
-            <div class="button"><button id="add-book">New Book</button> <button id="delete-all">Delete All</button></div>
+            <div class="button"><button id="add-book">New Book</button> <button id="delete-all">Delete All</button>
+            </div>
             <div class="read-count">Read Books: <span id="total_read">0</span></div>
             <div class="unread-count">Unread Books: <span id="total_unread">0</span></div>
         </div>
@@ -33,18 +34,20 @@
         <div class="add-book-form">
 
             <div class="new-book">New Book</div>
-            <form onsubmit="return false;">
+            <form onsubmit="return false;" novalidate>
                 <div class="title input">
                     <input type="text" id="title" placeholder="Title" required spellcheck="false">
                 </div>
-                <div class="author input"><input type="text" id="author" placeholder="Author" required spellcheck="false"></div>
-                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000" required spellcheck="false">
+                <div class="author input"><input type="text" id="author" placeholder="Author" required
+                        spellcheck="false"></div>
+                <div class="pages input"><input type="number" name="" placeholder="Pages" min="1" id="pages" max="10000"
+                        required spellcheck="false">
                 </div>
                 <div class="status-form">
                     Status -
-                    <input type="radio" name="status" id="read"  required value="Read">
+                    <input type="radio" name="status" id="read" required value="Read">
                     <label for="read">Read</label>
-                    <input type="radio" name="status" id="unread"  value="Unread">
+                    <input type="radio" name="status" id="unread" value="Unread">
                     <label for="unread">Unread</label>
                 </div>
                 <div class="done"><button>Add</button></div>
@@ -65,26 +68,11 @@
                         <th scope="col">Author</th>
                         <th scope="col">Pages</th>
                         <th scope="col">Status</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>Vagabond</td>
-                        <td>Miyomoto makashi</td>
-                        <td>400</td>
-                        <td class="status unread">Unread</td>
-                        <td id="trash" title="remove this book"><img src="./icons/trash.png" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Vagabond</td>
-                        <td>Miyomoto makashi</td>
-                        <td>400</td>
-                        <td class="status read">Read</td>
-                        <td id="trash" title="remove this book"><img src="./icons/trash.png" alt=""></td>
-                    </tr> -->
-                    
+
 
 
                 </tbody>
