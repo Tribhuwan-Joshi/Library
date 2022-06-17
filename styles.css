@@ -59,6 +59,7 @@ body {
 }
 #delete-all:hover {
   background-color: rgb(251, 175, 175);
+  box-shadow: 2px 2px 3px gray;
 }
 
 .add-book-form {
@@ -75,7 +76,11 @@ body {
   right: 0;
   margin: 1vh auto;
   /* background-color: #e3dad4; */
-  background:linear-gradient(to bottom right , rgb(190, 217, 245) , rgb(245, 160, 147));
+  background: linear-gradient(
+    to bottom right,
+    rgb(190, 217, 245),
+    rgb(182, 179, 179)
+  );
 
   border-radius: 10px;
 }
@@ -132,7 +137,7 @@ form button {
   cursor: pointer;
 }
 
-form button:hover{
+form button:hover {
   box-shadow: 1px 1px 5px rgb(165, 164, 164);
 }
 
@@ -176,8 +181,8 @@ thead th:nth-child(5) {
 }
 
 table img#trash {
- display: block;
- margin-left: 1vw;
+  display: block;
+  margin-left: 1vw;
   cursor: pointer;
 }
 
@@ -206,7 +211,6 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
-
 
 /* status */
 .status {

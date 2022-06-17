@@ -28,6 +28,15 @@ const unreadContainer = document.querySelector("#total_unread");
 
 // Book array
 let myLibrary = [];
+const done = document.querySelector(".done button");
+const ele = document.getElementsByName("status");
+let statusContainer;
+let removeContainer;
+
+function updateContainers() {
+  statusContainer = document.querySelectorAll("table .status");
+  removeContainer = document.querySelectorAll("img#trash");
+}
 
 // hide new book form when clicked outside
 document.addEventListener("click", () => {
@@ -66,6 +75,8 @@ deleteAll.addEventListener("click", (e) => {
     if (response) {
       table.textContent = "";
       myLibrary = [];
+      statusContainer = null;
+      removeContainer = null;
       resetInfoData();
     }
   }
@@ -94,7 +105,8 @@ function renderBook() {
 function updateInfo() {
   totalContainer.textContent = totalBooks;
   readContainer.textContent = readBooks;
-  unreadContainer.textContent = totalBooks - readBooks;
+  unreadBooks = totalBooks - readBooks;
+  unreadContainer.textContent = unreadBooks;
 }
 
 //reset info data
@@ -114,11 +126,12 @@ function addBookToLibrary(myBook) {
   bookFormVisible = false;
 }
 
-// create new book object when clicked
-const done = document.querySelector(".done button");
-const ele = document.getElementsByName("status");
-let statusContainer;
-let removeContainer;
+// add eventListener
+
+function addEventListeners() {
+  toggleStatus();
+  removeBook();
+}
 
 // toggle status
 
@@ -130,14 +143,21 @@ function toggleStatus() {
       if (textContent == "Read") {
         e.target.textContent = "Unread";
         e.target.style.backgroundColor = "rgb(253, 155, 70)";
+        e.target.classList.remove("Read");
+        e.target.classList.add("Unread");
         myLibrary[index].status = "Unread";
+
         readBooks--;
       } else {
         e.target.textContent = "Read";
         e.target.style.backgroundColor = "rgb(125, 243, 131)";
         myLibrary[index].status = "Read";
+        e.target.classList.remove("Unread");
+        e.target.classList.add("Read");
         readBooks++;
       }
+      // statusContainer = document.querySelectorAll("table .status");
+      updateContainers();
       updateInfo();
     });
   });
@@ -148,15 +168,18 @@ function removeBook() {
   removeContainer.forEach((rc) => {
     rc.addEventListener("click", (e) => {
       let index = e.target.getAttribute("data-Id");
-      console.log(myLibrary[index].status);
+
       if (myLibrary[index].status == "Read") {
         readBooks--;
       }
       totalBooks--;
-      myLibrary.splice(index, 1);
 
+      myLibrary.splice(index, 1);
       updateInfo();
       renderBook();
+      // removeContainer = document.querySelectorAll("img#trash");
+      updateContainers();
+      addEventListeners();
     });
   });
 }
@@ -203,11 +226,11 @@ done.addEventListener("click", () => {
 
     let myBook = new Book(titleValue, authorValue, pages.value, statusValue);
     addBookToLibrary(myBook);
+    updateContainers();
+    // statusContainer = document.querySelectorAll("table .status");
+    // removeContainer = document.querySelectorAll("img#trash");
 
-    statusContainer = document.querySelectorAll("table .status");
-    removeContainer = document.querySelectorAll("img#trash");
-
-    toggleStatus();
     removeBook();
+    toggleStatus();
   }
 });
