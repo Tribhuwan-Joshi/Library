@@ -3,11 +3,13 @@ const table = document.querySelector("table").getElementsByTagName("tbody")[0];
 table.textContent = "";
 
 // Book constructor
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 }
 
 // new book form
@@ -92,9 +94,8 @@ function renderBook() {
                         <td>${myLibrary[i].title}</td>
                         <td>${myLibrary[i].author}</td>
                         <td>${myLibrary[i].pages}</td>
-                        <td class="status ${
-                          myLibrary[i].status
-                        }" data-Id=${i}>${myLibrary[i].status}</td>
+                        <td class="status ${myLibrary[i].status
+      }" data-Id=${i}>${myLibrary[i].status}</td>
                         <td  title="remove this book" ><img src="./icons/trash.png"  id="trash" data-Id=${i} alt=""></td>
                     </tr>`;
     let newRow = table.insertRow();
